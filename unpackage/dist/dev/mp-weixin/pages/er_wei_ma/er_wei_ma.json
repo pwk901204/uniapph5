@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "转发二维码",
+  "usingComponents": {
+    "tki-qrcode": "/components/tki-qrcode/tki-qrcode"
+  }
+}

@@ -1,0 +1,48 @@
+.content.data-v-4d62cbf8 {
+  padding-left: 40rpx;
+  padding-right: 40rpx;
+}
+.card-box.data-v-4d62cbf8 {
+  margin-top: 60rpx;
+  height: 240rpx;
+  background: -webkit-gradient(linear, right top, left top, from(#739fff), to(#427dff));
+  background: -o-linear-gradient(right, #739fff 0%, #427dff 100%);
+  background: linear-gradient(270deg, #739fff 0%, #427dff 100%);
+  -webkit-box-shadow: 0px 0px 14rpx 0px rgba(199, 199, 199, 0.5);
+          box-shadow: 0px 0px 14rpx 0px rgba(199, 199, 199, 0.5);
+  border-radius: 12rpx;
+  position: relative;
+}
+.card-box .card-icon.data-v-4d62cbf8 {
+  width: 94rpx;
+  height: 94rpx;
+  position: absolute;
+  top: 68rpx;
+  left: 54rpx;
+}
+.card-box .card-info.data-v-4d62cbf8 {
+  position: absolute;
+  top: 58rpx;
+  left: 176rpx;
+}
+.card-box .card-info .bank-name.data-v-4d62cbf8,
+.card-box .card-info .card-num.data-v-4d62cbf8 {
+  height: 56rpx;
+  font-size: 40rpx;
+  font-weight: 500;
+  color: #ffffff;
+  line-height: 56rpx;
+}
+.card-box .card-info .card-num.data-v-4d62cbf8 {
+  margin-top: 14rpx;
+}
+.change-card.data-v-4d62cbf8 {
+  margin-top: 30rpx;
+  height: 40rpx;
+  font-size: 28rpx;
+  font-weight: 400;
+  color: #427dff;
+  line-height: 40rpx;
+  text-align: right;
+}
+

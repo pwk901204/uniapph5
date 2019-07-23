@@ -1,0 +1,51 @@
+{
+  "pages": [
+    "pages/reg/reg",
+    "pages/baojia/baojia",
+    "pages/er_wei_ma/er_wei_ma",
+    "pages/service_confirm_new/service_confirm_new",
+    "pages/pay_address/pay_address",
+    "pages/pay_all/pay_all",
+    "pages/bill_detail/bill_detail",
+    "pages/user/user",
+    "pages/pay_two/pay_two",
+    "pages/pay_one/pay_one",
+    "pages/order_one_detail/order_one_detail",
+    "pages/order_two_detail/order_two_detail",
+    "pages/carmodal/carmodal",
+    "pages/pay_success/pay_success",
+    "pages/service_confirm/service_confirm",
+    "pages/service_month_fee/service_month_fee",
+    "pages/quote_bill/quote_bill",
+    "pages/main/main",
+    "pages/login/login",
+    "pages/dlr_login/dlr_login",
+    "pages/dlr_register/dlr_register",
+    "pages/dlr_card_info/dlr_card_info",
+    "pages/dlr_poster/dlr_poster",
+    "pages/dlr_my_assets/dlr_my_assets",
+    "pages/dlr_detailed/dlr_detailed",
+    "pages/dlr_withdraw/dlr_withdraw",
+    "pages/dlr_card_list/dlr_card_list",
+    "pages/dlr_withdraw_success/dlr_withdraw_success"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarBackgroundColor": "#fff",
+    "backgroundColor": "#fbf9fe",
+    "navigationStyle": "custom",
+    "enablePullDownRefresh": false
+  },
+  "tabBar": {
+    "color": "#7a7e83",
+    "selectedColor": "#0faeff",
+    "backgroundColor": "#ffffff",
+    "list": []
+  },
+  "networkTimeout": {
+    "request": 100000
+  },
+  "usingComponents": {},
+  "sitemapLocation": "sitemap.json"
+}

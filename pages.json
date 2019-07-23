@@ -1,0 +1,212 @@
+{
+    "pages" : [
+        //pages数组中第一项表示应用启动页,
+		{
+		    "path" : "pages/reg/reg",
+		    "style" : {
+		        "navigationBarTitleText" : "产品介绍"
+		    }
+		},
+		{
+		    "path" : "pages/baojia/baojia",
+		    "style" : {
+		        "navigationBarTitleText" : "快速报价"
+		    }
+		},
+		{
+            "path" : "pages/er_wei_ma/er_wei_ma",
+            "style" : {
+                "navigationBarTitleText" : "转发二维码"
+            }
+        },
+		{
+            "path" : "pages/service_confirm_new/service_confirm_new",
+            "style" : {
+                "navigationBarTitleText" : "确认信息"
+            }
+        },
+		{
+		    "path" : "pages/pay_address/pay_address",
+		    "style" : {
+		        "navigationBarTitleText" : "配送地址"
+		    }
+		},
+		{
+		    "path" : "pages/pay_all/pay_all",
+		    "style" : {
+		        "navigationBarTitleText" : "配送地址"
+		    }
+		},
+		
+		
+		{
+		    "path" : "pages/bill_detail/bill_detail",
+		    "style" : {
+		        "navigationBarTitleText" : "保单列表"
+		    }
+		},
+		{
+		    "path" : "pages/user/user",
+		    "style" : {
+		        "navigationBarTitleText" : "用户信息"
+		    }
+		},
+		
+		{
+		    "path" : "pages/pay_two/pay_two",
+		    "style" : {
+		        "navigationBarTitleText" : "支付成功"
+		    }
+		},
+		{
+		    "path" : "pages/pay_one/pay_one",
+		    "style" : {
+		        "navigationBarTitleText" : "支付成功"
+		    }
+		},
+		
+		{
+		    "path" : "pages/order_one_detail/order_one_detail",
+		    "style" : {
+		        "navigationBarTitleText" : "详情"
+		    }
+		},
+		{
+		    "path" : "pages/order_two_detail/order_two_detail",
+		    "style" : {
+		        "navigationBarTitleText" : "详情"
+		    }
+		},
+		{
+		    "path" : "pages/carmodal/carmodal",
+		    "style" : {
+		        "navigationBarTitleText" : "车型"
+		    }
+		},
+		
+		{
+		    "path" : "pages/pay_success/pay_success",
+		    "style" : {
+		        "navigationBarTitleText" : "支付成功"
+		    }
+		},
+		
+		{
+		    "path" : "pages/service_confirm/service_confirm",
+		    "style" : {
+		        "navigationBarTitleText" : "确认信息"
+		    }
+		},
+		{
+		    "path" : "pages/service_month_fee/service_month_fee",
+		    "style" : {
+		        "navigationBarTitleText" : "每月服务费"
+		    }
+		},
+        {
+            "path" : "pages/quote_bill/quote_bill",
+            "style" : {
+                "navigationBarTitleText" : "商业险"
+            }
+        },
+        
+        {
+            "path" : "pages/main/main",
+            "style" : {
+                "navigationBarTitleText" : "我的订单"
+            }
+        },
+        {
+            "path" : "pages/login/login",
+            "style" : {
+                "navigationBarTitleText" : "登录"
+            }
+        },
+		//代理人平台页面
+        {
+            "path" : "pages/dlr_login/dlr_login",
+            "style" : {
+                "navigationBarTitleText" : "登录"
+            }
+        },
+        {
+            "path" : "pages/dlr_register/dlr_register",
+            "style" : {
+                "navigationBarTitleText" : "注册"
+            }
+        },
+        {
+            "path" : "pages/dlr_card_info/dlr_card_info",
+            "style" : {
+                "navigationBarTitleText" : "银行卡信息"
+            }
+        },
+        {
+            "path" : "pages/dlr_poster/dlr_poster",
+            "style" : {
+                "navigationBarTitleText" : "代理人海报"
+            }
+        },
+		{
+            "path" : "pages/dlr_my_assets/dlr_my_assets",
+            "style" : {
+                "navigationBarTitleText" : "我的资产"
+            }
+		},
+		{
+            "path" : "pages/dlr_detailed/dlr_detailed",
+            "style" : {
+                "navigationBarTitleText" : "明细"
+            }
+		},
+		{
+            "path" : "pages/dlr_withdraw/dlr_withdraw",
+            "style" : {
+                "navigationBarTitleText" : "提现"
+            }
+		},
+		{
+            "path" : "pages/dlr_card_list/dlr_card_list",
+            "style" : {
+                "navigationBarTitleText" : "银行卡"
+            }
+		},
+		{
+            "path" : "pages/dlr_withdraw_success/dlr_withdraw_success",
+            "style" : {
+                "navigationBarTitleText" : "提现成功"
+            }
+		},
+		{
+            "path" : "pages/agreement/agreement",
+            "style" : {
+                "navigationBarTitleText" : "服务协议"
+            }
+		}
+    ],
+    "tabBar" : {
+        "color" : "#7a7e83",
+        "selectedColor" : "#0faeff",
+        "backgroundColor" : "#ffffff",
+        "list" : [
+            // 			{
+            //             "pagePath": "pages/main/main",
+            //             "text": "首页",
+            //             "iconPath": "static/img/home.png",
+            //             "selectedIconPath": "static/img/homeHL.png"
+            //         }, {
+            //             "pagePath": "pages/user/user",
+            //             "text": "我的",
+            //             "iconPath": "static/img/user.png",
+            //             "selectedIconPath": "static/img/userHL.png"
+            //         },
+        ]
+    },
+	"globalStyle": { 
+		"navigationBarTextStyle": "black", 
+		"navigationBarBackgroundColor": "#fff", 
+		"backgroundColor": "#fbf9fe", 
+		"navigationStyle": "custom", 
+		"enablePullDownRefresh": false 
+	} 
+}

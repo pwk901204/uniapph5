@@ -1,0 +1,1 @@
+<view class="container container-fill _div"><view class="item _div"><image src="{{$root.m0}}" class="_img"></image><label class="_span">提现成功</label></view><button class="button" type="primary" hover-class="button-hover" data-event-opts="{{[['tap',[['backAction',['$event']]]]]}}" bindtap="__e">确定</button></view>

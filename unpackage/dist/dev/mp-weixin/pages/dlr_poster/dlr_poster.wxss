@@ -1,0 +1,99 @@
+.content.data-v-4f6c5386 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+.top-text.data-v-4f6c5386 {
+  height: 34rpx;
+  font-size: 24rpx;
+  color: rgba(59, 59, 67, 0.6);
+  line-height: 34rpx;
+  text-align: center;
+  margin-top: 50rpx;
+}
+.poster-warp.data-v-4f6c5386 {
+  padding-left: 50rpx;
+  padding-right: 50rpx;
+  margin-top: 30rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  border-bottom: 2rpx solid rgba(0, 0, 0, 0.09);
+}
+.poster-warp .left-box .head-img.data-v-4f6c5386 {
+  width: 80rpx;
+  height: 80rpx;
+}
+.poster-warp .right-box.data-v-4f6c5386 {
+  margin-left: 20rpx;
+}
+.poster-warp .right-box .title.data-v-4f6c5386 {
+  height: 48rpx;
+  font-size: 34rpx;
+  font-weight: 500;
+  color: #5c6893;
+  line-height: 48rpx;
+}
+.poster-warp .right-box .article.data-v-4f6c5386 {
+  white-space: pre-line;
+  width: 550rpx;
+  margin-top: 10rpx;
+  font-size: 28rpx;
+  line-height: 40rpx;
+  color: rgba(0, 0, 0, 0.8);
+  -webkit-user-select: text;
+  -moz-user-select: text;
+   -ms-user-select: text;
+       user-select: text;
+}
+.poster-warp .right-box .poster.data-v-4f6c5386 {
+  width: 184rpx;
+  margin-top: 40rpx;
+}
+.poster-warp .right-box .btn-warp.data-v-4f6c5386 {
+  margin-top: 40rpx;
+  margin-bottom: 38rpx;
+  position: relative;
+  height: 60rpx;
+}
+.poster-warp .right-box .btn-warp .default.data-v-4f6c5386 {
+  position: absolute;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  right: 180rpx;
+  width: 160rpx;
+  border: 2rpx solid #427DFF;
+  background-color: #fff;
+  border-radius: 30rpx;
+  color: #427DFF;
+  font-size: 28rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  text-align: center;
+}
+.poster-warp .right-box .btn-warp .primary.data-v-4f6c5386 {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  position: absolute;
+  right: 0;
+  width: 160rpx;
+  background-color: #427DFF;
+  border-radius: 30rpx;
+  color: #ffffff;
+  font-size: 28rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  text-align: center;
+}
+

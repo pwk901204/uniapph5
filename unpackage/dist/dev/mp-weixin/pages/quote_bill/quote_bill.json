@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "商业险",
+  "usingComponents": {
+    "mpvue-picker": "/components/mpvue-picker/mpvuePicker"
+  }
+}
