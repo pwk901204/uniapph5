@@ -95,6 +95,7 @@
 				applyUnderwriteRaceEnd: false,
 				errorMsg: "",
 				showModal: false,
+				times:0
 			}
 		},
 
@@ -122,6 +123,7 @@
 			// 精准报价
 			async getExactQoute() {
 				let data = this.getQuotationsData
+				// debugger
 				let params = {
 					"license_no": data.license_no,
 					"response_no": data.response_no,
@@ -142,6 +144,33 @@
 						"flag": null
 					}]
 				};
+				// let params = {
+				// 	"license_no": '陕N5685J',
+				// 	"response_no":'',
+				// 	"brand_code": 'ea180ac0-19d3-4ec1-bcb5-57e140e394f8',
+				// 	// "bi_begin_date": data.bi_begin_date,
+				// 	// "ci_begin_date": data.ci_start_date,
+				// 	// "city_code": data.city,
+				// 	// "response_no": "f20d598e-e7a4-49cd-b15b-58d85bf9df58",
+				// 	// "brand_code": "538eb91d-993c-4a57-a03c-a36cf46fb913",
+				// 	"bi_begin_date": "2019-08-05",
+				// 	"ci_begin_date": "2019-08-05",
+				// 	"city_code": "610100",
+				// 	"first_reg_date": '2016-08-04',
+				// 	"frame_no": 'LSGKE54H8GW161294',
+				// 	"engine_no": '161535356',
+				// 	"owner_id": '62222319790701131X',
+				// 	"owner_name": '张秀国',
+				// 	"owner_mobile":'17605539425',
+				// 	"coverage_list": [
+				// 	 {
+				// 		"coverageCode": "B",
+				// 		"coverageName": "商业第三者责任险",
+				// 		"insuredAmount": "300000",
+				// 		"flag": null
+				// 	},
+				// 	]
+				// };
 				let res = await getExactQoute(params);
 				if (res.code == 200) {
 					this.insurer = res.data.data[0].insurerCode
@@ -159,7 +188,7 @@
 					biz_id: this.biz_id
 				})
 				if (res.code == 200) {
-					this.applyUnderwriteRace()
+					this.applyUnderwrite()
 				} else {
 					uni.showToast({
 						icon: 'none',
@@ -169,28 +198,28 @@
 				}
 			},
 			// 核保接口 逾期控制
-			applyUnderwriteRace() {
-				this.applyUnderwriteRaceEnd = false
-				let timeP = new Promise((resolve) => {
-					setTimeout(() => {
-						if (!this.applyUnderwriteRaceEnd) {
-							this.errorMsg = '核保中，稍后有客服人员与您联系，请耐心等候'
-							this.showWaitModal = true;
-						}
-						this.applyUnderwriteRaceEnd = true
-						resolve()
-					}, 30000)
-				})
-				Promise.race([timeP, this.applyUnderwrite()])
-			},
+			// applyUnderwriteRace() {
+			// 	this.applyUnderwriteRaceEnd = false
+			// 	let timeP = new Promise((resolve) => {
+			// 		setTimeout(() => {
+			// 			if (!this.applyUnderwriteRaceEnd) {
+			// 				this.errorMsg = '核保中，稍后有客服人员与您联系，请耐心等候'
+			// 				this.showWaitModal = true;
+			// 			}
+			// 			this.applyUnderwriteRaceEnd = true
+			// 			resolve()
+			// 		}, 30000)
+			// 	})
+			// 	Promise.race([timeP, this.applyUnderwrite()])
+			// },
 			// 核保
 			async applyUnderwrite() {
 				let params = {
-					insurer: this.insurer,
-					biz_id: this.biz_id,
+					insurer: this.insurer||'CCIC',
+					biz_id: this.biz_id||'54206744',
 					channel_code: "QUANLIAN_PROXY_INSURE",
-					address_name: this.getQuotationsData.name,
-					address_mobile: this.getQuotationsData.mobile,
+					address_name: this.getQuotationsData.name|| "张秀国",
+					address_mobile: this.getQuotationsData.mobile || "17605539425",
 					address_details: "老三届首座大厦30层",
 					address_county: "610100",
 					address_city: "610100",
@@ -198,27 +227,50 @@
 					policy_email: "cxt8860@126.com",
 				};
 				let res = await applyUnderwrite(params);
-				if (this.applyUnderwriteRaceEnd) {
-					return
-				}
-				this.applyUnderwriteRaceEnd = true
+				// if (this.applyUnderwriteRaceEnd) {
+				// 	return
+				// }
+				// this.applyUnderwriteRaceEnd = true
 				if (res.code == 200 && res.data.state == "1" && res.data.data.synchFlag == '0') {
 					this.showModal = true
-					debugger
-					// location.href = res.data.data.payLink
+					// debugger
+					location.href = res.data.data.payLink
 				} else if (res.code == 200 && res.data.state == "1" && res.data.data.synchFlag == '1') {
-					this.errorMsg = '核保中，稍后有客服人员与您联系，请耐心等候'
-					this.showWaitModal = true;
-				} else {
+					this.eachApplyUnderwrite(params)
+					// this.errorMsg = '核保中，稍后有客服人员与您联系，请耐心等候'
+					// this.showWaitModal = true;
+				} else if(res.code == 200 && res.data.state== '0') {
 					this.errorMsg = '核保失败'
 					this.showWaitModal = true;
 				}
+			},
+			// 轮询核保
+			eachApplyUnderwrite(params){
+				this.times = this.time + 1
+				if(this.times > 3){
+					this.errorMsg = '核保中，稍后有客服人员与您联系，请耐心等候'
+					this.showWaitModal = true;
+					return
+				}
+				uni.showLoading({ title: '加载中...' })
+				setTimeout(async ()=> {
+					let res = await applyUnderwrite(params);
+					uni.hideLoading()
+					if(res.code == 200 && res.data.state == '1'  && res.data.data.synchFlag == '0'){
+						this.showModal = true
+						location.href = res.data.data.payLink
+					}else if(res.code == 200 && ((res.data.state=='0' && res.data.data.synchFlag== null )||(res.data.state=='1' && res.data.data.synchFlag== '1'))){
+						this.eachApplyUnderwrite(params)
+					}else if(res.code == 200 && res.data.state == '0'  && res.data.data.synchFlag == '0'){
+						this.errorMsg = '核保失败'
+						this.showHeModal = true;
+					}
+				}, 5000);
 			},
 			async pay() {
 				this.getExactQoute()
 			},
 			getQueryString(name) {
-				
 				var reg = new RegExp("[?&]" + name + "=([^&#]*)", "i");
 				var res = window.location.href.match(reg);
 				if (res && res.length > 1) {

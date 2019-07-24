@@ -41,7 +41,7 @@
 				</navigator>
 			</div>
 
-			<div class=" button" @tap="applyUnderwriteRace">下一步</div>
+			<div class=" button" @tap="applyUnderwrite">下一步</div>
 
 		</div>
 
@@ -110,7 +110,8 @@
 				tax: '',
 				showHeModal: false,
 				showWaitModal:false, // 等待核保窗口
-				applyUnderwriteRaceEnd:false
+				applyUnderwriteRaceEnd:false,
+				times:0
 			}
 		},
 
@@ -147,19 +148,19 @@
 
 			},
 			// 核保接口 逾期控制
-			applyUnderwriteRace(){
-				this.applyUnderwriteRaceEnd=false
-				let timeP = new Promise((resolve)=>{
-					setTimeout(()=>{
-						if(!this.applyUnderwriteRaceEnd){
-							this.showWaitModal = true;
-						}
-						this.applyUnderwriteRaceEnd=true
-						resolve()
-					},30000)
-				})
-				Promise.race([timeP,this.applyUnderwrite()])
-			},
+			// applyUnderwriteRace(){
+			// 	this.applyUnderwriteRaceEnd=false
+			// 	let timeP = new Promise((resolve)=>{
+			// 		setTimeout(()=>{
+			// 			if(!this.applyUnderwriteRaceEnd){
+			// 				this.showWaitModal = true;
+			// 			}
+			// 			this.applyUnderwriteRaceEnd=true
+			// 			resolve()
+			// 		},30000)
+			// 	})
+			// 	Promise.race([timeP,this.applyUnderwrite()])
+			// },
 			// 核保
 			async applyUnderwrite() {
 				// "insurer": this.item.quote_result.data[0].insurerCode,
@@ -189,8 +190,6 @@
 					policy_email:"cxt8860@126.com",
 				};
 				let res = await applyUnderwrite(params);
-				if(this.applyUnderwriteRaceEnd){return}
-				this.applyUnderwriteRaceEnd = true
 				if (res.code == 200 && res.data.state == "1" && res.data.data.synchFlag == '0') {
 					this.monthly_expense = this.item.monthly_expense;
 					this.mileage_expense = this.item.mileage_expense;
@@ -199,10 +198,35 @@
 					uni.setStorageSync('global', this.global);
 					this.next();
 				} else if (res.code == 200 &&  res.data.state == "1"  && res.data.data.synchFlag == '1'){
-					this.showWaitModal = true;
-				} else {
+					this.eachApplyUnderwrite(params)
+				} else if(res.code == 200 &&  res.data.state == "0"){
 					this.showHeModal = true;
 				}
+			},
+			// 轮询核保
+			eachApplyUnderwrite(params){
+				this.times = this.time + 1
+				if(this.times > 3){
+					this.showWaitModal = true;
+					return
+				}
+				uni.showLoading({ title: '加载中...' })
+				setTimeout(async ()=> {
+					uni.hideLoading()
+					let res = await applyUnderwrite(params);
+					if(res.code == 200 && res.data.state == '1'  && res.data.data.synchFlag == '0'){
+						this.monthly_expense = this.item.monthly_expense;
+						this.mileage_expense = this.item.mileage_expense;
+						this.tax = parseInt(this.item.tax);
+						this.tax = this.tax ? this.tax : '';
+						uni.setStorageSync('global', this.global);
+						this.next();
+					}else if(res.code == 200 && ((res.data.state=='0' && res.data.data.synchFlag== null )||(res.data.state=='1' && res.data.data.synchFlag== '1'))){
+						this.eachApplyUnderwrite(params)
+					}else if(res.code == 200 && res.data.state == '0'  && res.data.data.synchFlag == '0'){
+						this.showHeModal = true;
+					}
+				}, 5000);
 			},
 			async result() {
 				let res = await result(this.global.quotation_id);
@@ -278,7 +302,6 @@
 		width: 100%;
 		box-sizing: border-box;
 		text-align: center;
-
 	}
 
 	.head_wrap .div {

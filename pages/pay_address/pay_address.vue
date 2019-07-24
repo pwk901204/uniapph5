@@ -217,9 +217,9 @@
 			},
 
 			async pay() {
-				debugger
-				this.next();
-				return;
+				// debugger
+				// this.next();
+				// return;
 				let that = this;
 				if (!this.address) {
 					wx.showToast({
