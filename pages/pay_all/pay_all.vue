@@ -215,11 +215,11 @@
 			// 核保
 			async applyUnderwrite() {
 				let params = {
-					insurer: this.insurer||'CCIC',
-					biz_id: this.biz_id||'54206744',
+					insurer: this.insurer,
+					biz_id: this.biz_id,
 					channel_code: "QUANLIAN_PROXY_INSURE",
-					address_name: this.getQuotationsData.name|| "张秀国",
-					address_mobile: this.getQuotationsData.mobile || "17605539425",
+					address_name: this.getQuotationsData.name,
+					address_mobile: this.getQuotationsData.mobile,
 					address_details: "老三届首座大厦30层",
 					address_county: "610100",
 					address_city: "610100",
